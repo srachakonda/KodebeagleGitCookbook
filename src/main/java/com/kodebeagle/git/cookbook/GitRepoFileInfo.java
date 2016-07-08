@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
@@ -15,7 +16,7 @@ import org.eclipse.jgit.treewalk.TreeWalk;
 
 public class GitRepoFileInfo {
 
-	private static final String GIT_PATH = "/home/sampathr/packfiles/.git";
+	private static final String GIT_PATH =  "/home/pranavs/test/.git";  //"/home/sampathr/packfiles/.git";
 
 	public static void main(String[] args) throws IOException {
 
@@ -30,6 +31,14 @@ public class GitRepoFileInfo {
 			System.out.println("--------------");
 			System.out.println(fileInfo.getFileName());
 			System.out.println(new String(GitFileData.getFileContent(fileInfo), "UTF-8"));
+			try {
+				List<History> fileHistory = GitFileData.getFileHistory(fileInfo);
+				for(History history : fileHistory){
+					System.out.println(history.getCommitId());
+				}
+			} catch (GitAPIException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
