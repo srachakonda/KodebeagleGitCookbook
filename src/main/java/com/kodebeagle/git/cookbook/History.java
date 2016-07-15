@@ -1,8 +1,10 @@
 package com.kodebeagle.git.cookbook;
 
+import org.eclipse.jgit.lib.ObjectId;
+
 public class History {
     private String commitId;
-    private String objectId;
+    private ObjectId objectId;
 
     public String getCommitId() {
         return commitId;
@@ -12,11 +14,11 @@ public class History {
         this.commitId = commitId;
     }
 
-    public String getObjectId() {
+    public ObjectId getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(String objectId) {
+    public void setObjectId(ObjectId objectId) {
         this.objectId = objectId;
     }
 }
